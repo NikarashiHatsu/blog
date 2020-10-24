@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/main.css" />
+    <link rel="stylesheet" href="/public/css/slick.css" />
+    <link rel="shortcut icon" href="/public/icons/favicon.ico" type="image/x-icon">
+</head>
+<body class="min-h-screen bg-gray-300 text-gray-900">
+    <div class="mx-auto shadow-lg" style="max-width: 320px">
+        <div class="container mx-auto bg-white p-6">
+            <header class="app-header">
+                <div class="app-header-title">
+                    <small class="uppercase" id="date">-Tanggal-</small>
+                    <h6 class="title">A Developer's Note</h6>
+                </div>
+                <img src="/public/icons/favicon.ico" alt="Icon" class="w-10 h-10">
+            </header>
+        </div>
+    
+        <div class="container mx-auto bg-white">
+            <div class="bg-white pl-6">
+                <div class="slideshow"></div>
+            </div>
+        </div>
+    
+        <div class="container mx-auto bg-white px-6">
+            <div class="py-6 pb-10 sm:pb-0">
+                <div class="flex items-center justify-between mb-6">
+                    <h6>Terbaru</h6>
+                    <a href="javascript:void(0)" class="text-blue-500 hover:text-blue-700 text-xs transition duration-200 ease-in-out">Selengkapnya</a>
+                </div>
+    
+                <div class="flex flex-col" id="articles">
+                    
+    
+                    <a href="javascript:void(0)" class="flex flex-row">
+                        <img src="/public/images/aaron-burden-9z848quTH5Y-unsplash.jpg" class="w-1/4 h-16 object-fit rounded-lg mr-4">
+                        <div class="information w-3/4">
+                            <p class="uppercase text text-blue-500 text-sm font-bold">Umum</p>
+                            <p class="font-bold">Perkenalan</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    
+            <nav class="nav fixed bottom-0 left-0 flex sm:hidden">
+                <a href="javascript:void(0)" class="nav-icon">
+                    <img src="/public/icons/home.svg" alt="Home">
+                </a>
+                <a href="javascript:void(0)" class="nav-icon">
+                    <img src="/public/icons/user.svg" alt="Writer Info">
+                </a>
+                <a href="javascript:void(0)" class="nav-icon">
+                    <img src="/public/icons/settings.svg" alt="Settings">
+                </a>
+            </nav>
+        </div>
+        
+        <div class="bg-gray-100 py-2 w-100 text-center border-t text-sm mb-12 sm:mb-0">
+            Copyright &copy; Aghits Nidallah 2020
+        </div>
+    </div>
+    
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/slick.min.js"></script>
+    <script>
+        var date = new Date().toLocaleString('id-ID', { month: 'long', day: 'numeric', year: 'numeric' });
+        document.getElementById("date").innerHTML = date;
+        
+        $(document).ready(function() {
+            var data = [
+                {
+                    "image": "/public/images/daniel-sessler-4r3iFXolFec-unsplash.jpg",
+                    "title": "Materi Sistem Informasi Pertemuan 1",
+                    "author": "Aghits Nidallah",
+                    "label": "Materi",
+                    "content": [
+                        {
+                            "p": "Halo semua"
+                        }
+                    ]
+                },
+                {
+                    "image": "/public/images/aaron-burden-9z848quTH5Y-unsplash.jpg",
+                    "title": "Perkenalan",
+                    "author": "Aghits Nidallah",
+                    "label": "Umum",
+                    "content": [
+                        {
+                            "p": "Halo semua"
+                        }
+                    ]
+                },
+            ];
+
+            var slidesData = [
+                data[1],
+                data[0],
+            ];
+
+            var slides = "";
+            var articles = "";
+
+            slidesData.forEach((item, key) => {
+                var slide = `
+                    <a href="javascript:void(0)" onclick="openArticle(${key})">
+                        <img src="${item.image}" />
+                        <div class="caption-wrapper">
+                            <h6 class="title">${item.title}</h6>
+                            <div class="caption">
+                                <div class="bg-white h-6 w-6 mr-2 rounded"></div>
+                                <small class="text-white">${item.author}</small>
+                            </div>
+                        </div>
+                    </a>
+                `;
+
+                slides += slide;
+            });
+            data.forEach((item, key) => {
+                var d = `
+                    <a href="javascript:void(0)" class="flex flex-row mb-6" onclick="openArticle(${key})">
+                        <img src="${item.image}" class="w-1/4 h-16 object-fit rounded-lg mr-4">
+                        <div class="information w-3/4">
+                            <p class="uppercase text text-blue-500 text-sm font-bold">${item.label}</p>
+                            <p class="font-bold">${item.title}</p>
+                        </div>
+                    </a>
+                `;
+
+                articles += d;
+            });
+
+            $('#articles').html(articles);
+            $('.slideshow').html(slides);
+            $('.slideshow').slick({
+                infinite: false,
+                slidesToShow: 1.25,
+                slidesToScroll: 1,
+                arrows: false,
+            });
+        });
+
+        function openArticle(key) {
+            console.log(key);
+        }
+    </script>
+</body>
+</html>

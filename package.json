@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "A personal HatsuShiroyuki's Blog",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "slick": "^1.12.2"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "@tailwindcss/typography": "^0.2.0",
+    "tailwindcss": "^1.9.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "HatsuShiroyuki",
+  "license": "ISC"
+}
